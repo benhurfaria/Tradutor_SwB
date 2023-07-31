@@ -20,6 +20,9 @@ int main()
   char v1;
   int r, i1, i2;
   int inicio, fim, passo;
+  int num_funcao;
+  char nome_parametro[3];
+  int numero_parametro[3];
   char line[LINESZ];
   int count = 0;
 
@@ -58,13 +61,31 @@ int main()
     }
     
     // Verifica se é um 'if'
-    r = sscanf(line, "if v%d > v%d", &i1, &i2);
+    r = sscanf(line, "if v%d > v%d", &i1, &i2);    
     if (r == 2) {
       printf("Linha %d: %s\n", count, line);
       printf("Indices: %d e %d\n", i1, i2);
       printf("---\n");
       continue;
     }
+
+    //verifica se é funcao e analisa a quantidade de parametros.
+    r = sscanf(line, "function f%d p%c%d p%c p%c%d", &num_funcao, &nome_parametro[0], &numero_parametro[0],  &nome_parametro[1], &numero_parametro[1], &nome_parametro[2], &numero_parametro[2]);
+    int quantidade_parametros = (r-1)/2;
+
+    if(quantidade_parametros == 1){
+        continue;
+    }
+    if(quantidade_parametros == 2){
+        continue;
+    }
+    if(quantidade_parametros == 3){
+        continue;
+    }
+
+    
+
+
   }
 
   return 0;
